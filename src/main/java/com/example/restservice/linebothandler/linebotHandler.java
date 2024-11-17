@@ -9,6 +9,10 @@ import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.net.http.HttpResponse;
 
 @LineMessageHandler
 public class linebotHandler {
@@ -27,10 +31,13 @@ public class linebotHandler {
 //        String result = productScraper.scrapeProduct(originalMessageText);
 //        return new TextMessage(result);
 //    }
+    @PostMapping
     @EventMapping
-    public void handleMessageEvent(MessageEvent<TextMessageContent> event) {
+    public ResponseEntity handleMessageEvent(MessageEvent<TextMessageContent> event) {
         final String originalMessageText = event.getMessage().getText();
         System.out.println(originalMessageText);
+
+        return ResponseEntity.ok(originalMessageText);
     }
 
     @EventMapping
