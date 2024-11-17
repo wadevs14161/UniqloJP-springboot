@@ -11,9 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.net.http.HttpResponse;
 
+@RestController
 @LineMessageHandler
 public class linebotHandler {
 
@@ -36,7 +38,7 @@ public class linebotHandler {
     public ResponseEntity handleMessageEvent(MessageEvent<TextMessageContent> event) {
         final String originalMessageText = event.getMessage().getText();
         System.out.println(originalMessageText);
-
+        System.out.println("This is postMapping in linbot!");
         return ResponseEntity.ok(originalMessageText);
     }
 

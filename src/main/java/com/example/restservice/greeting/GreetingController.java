@@ -22,9 +22,8 @@ public class GreetingController {
 	}
 
 	@PostMapping("/testPost")
-	public String testPost(@RequestBody String name) {
-		System.out.println("HERE!");
-		return String.format("HEYHEY, %s!", name);
+	public void testPost(@RequestBody String name) {
+		System.out.println("This is postmapping in GreetingController!");
 	}
 
 }
