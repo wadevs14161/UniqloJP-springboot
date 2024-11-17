@@ -9,24 +9,28 @@ import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @LineMessageHandler
 public class linebotHandler {
 
     private final Logger log = LoggerFactory.getLogger(linebotHandler.class);
 
+//    @EventMapping
+//    public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+//        log.info("handleTextMessageEvent " + event);
+//
+//        final String originalMessageText = event.getMessage().getText();
+//
+//        // If originalMessageText is 6-digits string, call scrapeProduct
+//        ProductService productScraper = new ProductService();
+////        Product product = productScraper.scrapeProduct(originalMessageText);
+//        String result = productScraper.scrapeProduct(originalMessageText);
+//        return new TextMessage(result);
+//    }
     @EventMapping
-    public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-        log.info("handleTextMessageEvent " + event);
-
+    public void handleMessageEvent(MessageEvent<TextMessageContent> event) {
         final String originalMessageText = event.getMessage().getText();
-
-        // If originalMessageText is 6-digits string, call scrapeProduct
-        ProductService productScraper = new ProductService();
-//        Product product = productScraper.scrapeProduct(originalMessageText);
-        String result = productScraper.scrapeProduct(originalMessageText);
-        return new TextMessage(result);
+        System.out.println(originalMessageText);
     }
 
     @EventMapping

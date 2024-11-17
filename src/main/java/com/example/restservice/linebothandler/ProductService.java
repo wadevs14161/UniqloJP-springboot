@@ -5,6 +5,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.context.annotation.Bean;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
