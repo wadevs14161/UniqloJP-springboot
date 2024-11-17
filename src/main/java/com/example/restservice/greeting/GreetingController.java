@@ -3,11 +3,8 @@ package com.example.restservice.greeting;
 import java.net.URI;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.linecorp.bot.messaging.model.SetWebhookEndpointRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.linecorp.bot.messaging.client.MessagingApiClient;
 
 
 @RestController
