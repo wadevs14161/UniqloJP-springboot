@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+
+
 public class ProductService {
 
     private String productUrlTemplate = "https://www.uniqlo.com/jp/ja/products/%s";

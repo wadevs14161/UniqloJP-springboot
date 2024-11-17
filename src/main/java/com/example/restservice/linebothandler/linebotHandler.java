@@ -1,6 +1,5 @@
 package com.example.restservice.linebothandler;
 
-
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
@@ -10,12 +9,14 @@ import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @LineMessageHandler
 public class linebotHandler {
 
     private final Logger log = LoggerFactory.getLogger(linebotHandler.class);
 
+    @PostMapping
     @EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         log.info("handleTextMessageEvent " + event);
