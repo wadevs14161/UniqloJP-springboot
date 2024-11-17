@@ -16,7 +16,6 @@ public class linebotHandler {
 
     private final Logger log = LoggerFactory.getLogger(linebotHandler.class);
 
-    @PostMapping
     @EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         log.info("handleTextMessageEvent " + event);
