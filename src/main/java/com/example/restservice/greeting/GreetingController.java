@@ -18,9 +18,9 @@ public class GreetingController {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 
-	@PostMapping("/testPost")
-	public void testPost(@RequestBody String name) {
-		System.out.println("This is postmapping in GreetingController!");
+	@GetMapping("/")
+	public String index() {
+		return "Landing page from Spring Boot!";
 	}
 
 }
