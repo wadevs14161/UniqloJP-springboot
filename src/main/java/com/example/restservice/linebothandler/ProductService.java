@@ -35,7 +35,8 @@ public class ProductService {
                 product.setProductId(productId);
                 product.setProductUrl(productUrl);
             } else {
-                return "商品不存在日本官網拉~";
+                return "商品不存在日本Uniqlo哦! (期間限定價格商品可能找不到)" + "\n" +
+                        "請重新輸入或按 1 看範例~";
             }
 
             String productDetailsUrl = String.format(productDetailsUrlTemplate, productId);
@@ -122,9 +123,11 @@ public class ProductService {
 
                 for (Map.Entry<String, List<String>> entry : product.getStockStatus().entrySet()) {
                     String color = entry.getKey();
-                    List<String> sizeList = entry.getValue();
-                    String sizeSummary = String.join(", ", sizeList);
-                    stockStatusString.append(color).append(": ").append(sizeSummary).append("\n");
+                    String sizeSummary = String.join(", ", entry.getValue());
+                    stockStatusString.append(String.format("%-8s %s\n", color, sizeSummary));
+//                    List<String> sizeList = entry.getValue();
+//                    String sizeSummary = String.join(", ", sizeList);
+//                    stockStatusString.append(color).append(": ").append(sizeSummary).append("\n");
                 }
 
                 // Convert price in JPY to TWD
@@ -152,10 +155,13 @@ public class ProductService {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+//        System.out.println("stock: " + stockStatusString);
+//        System.out.println("length " + stockStatusString.length());
         return "商品連結: " + product.getProductUrl() + "\n" +
                 "日本售價: ¥" + product.getProductPrice().toString() + "\n" +
                 "折合台幣: " + product.getProductPriceInTwd() + "元" + "\n" +
-                stockStatusString;
+                "庫存: " + "\n" +
+                (stockStatusString.isEmpty() ? "可能是賣完囉" : stockStatusString);
     }
 
     @NotNull

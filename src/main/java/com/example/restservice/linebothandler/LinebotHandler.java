@@ -5,10 +5,13 @@ import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.model.message.ImageMessage;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.net.URI;
 
 
 @LineMessageHandler
@@ -24,6 +27,10 @@ public class LinebotHandler {
             ProductService productService = new ProductService();
             String result = productService.scrapeProduct(userText);
             return new TextMessage(result);
+        } else if (userText.equals("1")) {
+            String exampleUrl = "https://i.imgur.com/HLw9BhO.jpg";
+            URI originalContentUri = URI.create(exampleUrl);
+            return new ImageMessage(originalContentUri, originalContentUri);
         } else {
             return new TextMessage("請輸入6位數字的產品ID");
         }
